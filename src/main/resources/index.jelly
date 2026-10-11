@@ -1,0 +1,5 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Sends your documentation files to the Asyntai AI chatbot knowledge base on every build,
+    so the chatbot on your website always answers from the current docs.
+</div>

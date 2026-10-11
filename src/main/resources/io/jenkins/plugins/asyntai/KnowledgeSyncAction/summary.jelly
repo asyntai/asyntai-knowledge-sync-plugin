@@ -1,0 +1,20 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:t="/lib/hudson">
+    <t:summary icon="symbol-cloud-upload-outline plugin-ionicons-api">
+        <strong>Asyntai Knowledge Sync<j:if test="${it.dryRun}"> (dry run)</j:if></strong>:
+        added ${it.result.added}, updated ${it.result.updated}, unchanged ${it.result.unchanged},
+        deleted ${it.result.deleted}<j:if test="${it.result.skipped gt 0}">, skipped ${it.result.skipped}</j:if><j:if test="${it.result.failed gt 0}">, failed ${it.result.failed}</j:if>.
+        <j:if test="${!it.rows.isEmpty()}">
+            <table class="jenkins-table jenkins-table--small" style="margin-top: 8px">
+                <thead>
+                    <tr><th>Result</th><th>Entry</th></tr>
+                </thead>
+                <tbody>
+                    <j:forEach var="row" items="${it.rows}">
+                        <tr><td>${row.result}</td><td>${row.title}</td></tr>
+                    </j:forEach>
+                </tbody>
+            </table>
+        </j:if>
+    </t:summary>
+</j:jelly>
