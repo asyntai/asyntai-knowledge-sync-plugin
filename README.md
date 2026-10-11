@@ -80,7 +80,7 @@ asyntaiKnowledgeSync credentialsId: 'asyntai-api-key',
 
 ## Requirements
 
-- Jenkins 2.528.3 or later.
+- Jenkins 2.555.3 or later.
 - An Asyntai account on the Starter plan or higher. The plugin itself is free.
 
 Full guide: https://asyntai.com/documentation/integrations/jenkins/
