@@ -24,7 +24,8 @@ public class AsyntaiClient implements KnowledgeApi {
 
     private final HttpClient http;
     private final String baseUrl;
-    private final String apiKey;
+    /** The finished header value. The bare key is not kept in a field. */
+    private final String authorizationHeader;
 
     public AsyntaiClient(String baseUrl, String apiKey) {
         this(ProxyConfiguration.newHttpClient(), baseUrl, apiKey);
@@ -37,7 +38,7 @@ public class AsyntaiClient implements KnowledgeApi {
             url = url.substring(0, url.length() - 1);
         }
         this.baseUrl = url;
-        this.apiKey = apiKey;
+        this.authorizationHeader = "Bearer " + apiKey;
     }
 
     @Override
@@ -95,7 +96,7 @@ public class AsyntaiClient implements KnowledgeApi {
             throw new ApiException("The API URL " + baseUrl + " is not valid.", 0);
         }
         builder.timeout(TIMEOUT)
-                .header("Authorization", "Bearer " + apiKey)
+                .header("Authorization", authorizationHeader)
                 .header("Accept", "application/json")
                 .header("User-Agent", "asyntai-jenkins-plugin");
         if (body != null) {
